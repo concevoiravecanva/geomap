@@ -26,4 +26,20 @@ declare module "*.svg" {
   export default content;
 }
 
+// Support importing SVGs as React components via resource query (?react)
+declare module "*.svg?react" {
+  const ReactComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  export default ReactComponent;
+}
+
+declare module "*.svg?url" {
+  const url: string;
+  export default url;
+}
+
+declare module "*.svg?data" {
+  const dataUrl: string;
+  export default dataUrl;
+}
+
 declare const BACKEND_HOST: string;

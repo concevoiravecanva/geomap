@@ -119,6 +119,11 @@ export function buildConfig({
           test: /\.svg$/,
           oneOf: [
             {
+              // import file.svg?data -> inline as DataURL (no separate request)
+              resourceQuery: /data/,
+              type: "asset/inline",
+            },
+            {
               issuer: /\.[jt]sx?$/,
               resourceQuery: /react/, // *.svg?react
               use: ["@svgr/webpack", "url-loader"],
